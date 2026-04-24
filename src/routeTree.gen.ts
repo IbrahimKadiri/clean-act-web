@@ -9,8 +9,44 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as VehiculesRouteImport } from './routes/vehicules'
+import { Route as TransportRouteImport } from './routes/transport'
+import { Route as TransitVehiculesRouteImport } from './routes/transit-vehicules'
+import { Route as EquipeRouteImport } from './routes/equipe'
+import { Route as DevisRouteImport } from './routes/devis'
+import { Route as CataloguesRouteImport } from './routes/catalogues'
 import { Route as IndexRouteImport } from './routes/index'
 
+const VehiculesRoute = VehiculesRouteImport.update({
+  id: '/vehicules',
+  path: '/vehicules',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TransportRoute = TransportRouteImport.update({
+  id: '/transport',
+  path: '/transport',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TransitVehiculesRoute = TransitVehiculesRouteImport.update({
+  id: '/transit-vehicules',
+  path: '/transit-vehicules',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EquipeRoute = EquipeRouteImport.update({
+  id: '/equipe',
+  path: '/equipe',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DevisRoute = DevisRouteImport.update({
+  id: '/devis',
+  path: '/devis',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CataloguesRoute = CataloguesRouteImport.update({
+  id: '/catalogues',
+  path: '/catalogues',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +55,116 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/catalogues': typeof CataloguesRoute
+  '/devis': typeof DevisRoute
+  '/equipe': typeof EquipeRoute
+  '/transit-vehicules': typeof TransitVehiculesRoute
+  '/transport': typeof TransportRoute
+  '/vehicules': typeof VehiculesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/catalogues': typeof CataloguesRoute
+  '/devis': typeof DevisRoute
+  '/equipe': typeof EquipeRoute
+  '/transit-vehicules': typeof TransitVehiculesRoute
+  '/transport': typeof TransportRoute
+  '/vehicules': typeof VehiculesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/catalogues': typeof CataloguesRoute
+  '/devis': typeof DevisRoute
+  '/equipe': typeof EquipeRoute
+  '/transit-vehicules': typeof TransitVehiculesRoute
+  '/transport': typeof TransportRoute
+  '/vehicules': typeof VehiculesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/catalogues'
+    | '/devis'
+    | '/equipe'
+    | '/transit-vehicules'
+    | '/transport'
+    | '/vehicules'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/catalogues'
+    | '/devis'
+    | '/equipe'
+    | '/transit-vehicules'
+    | '/transport'
+    | '/vehicules'
+  id:
+    | '__root__'
+    | '/'
+    | '/catalogues'
+    | '/devis'
+    | '/equipe'
+    | '/transit-vehicules'
+    | '/transport'
+    | '/vehicules'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CataloguesRoute: typeof CataloguesRoute
+  DevisRoute: typeof DevisRoute
+  EquipeRoute: typeof EquipeRoute
+  TransitVehiculesRoute: typeof TransitVehiculesRoute
+  TransportRoute: typeof TransportRoute
+  VehiculesRoute: typeof VehiculesRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/vehicules': {
+      id: '/vehicules'
+      path: '/vehicules'
+      fullPath: '/vehicules'
+      preLoaderRoute: typeof VehiculesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/transport': {
+      id: '/transport'
+      path: '/transport'
+      fullPath: '/transport'
+      preLoaderRoute: typeof TransportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/transit-vehicules': {
+      id: '/transit-vehicules'
+      path: '/transit-vehicules'
+      fullPath: '/transit-vehicules'
+      preLoaderRoute: typeof TransitVehiculesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/equipe': {
+      id: '/equipe'
+      path: '/equipe'
+      fullPath: '/equipe'
+      preLoaderRoute: typeof EquipeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/devis': {
+      id: '/devis'
+      path: '/devis'
+      fullPath: '/devis'
+      preLoaderRoute: typeof DevisRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/catalogues': {
+      id: '/catalogues'
+      path: '/catalogues'
+      fullPath: '/catalogues'
+      preLoaderRoute: typeof CataloguesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,7 +177,22 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CataloguesRoute: CataloguesRoute,
+  DevisRoute: DevisRoute,
+  EquipeRoute: EquipeRoute,
+  TransitVehiculesRoute: TransitVehiculesRoute,
+  TransportRoute: TransportRoute,
+  VehiculesRoute: VehiculesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { createStart } from '@tanstack/react-start'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+  }
+}
