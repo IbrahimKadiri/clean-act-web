@@ -36,7 +36,7 @@ export const Route = createRootRoute({
           "GACTI accompagne vos formalités douanières, l'export de véhicules, le transport maritime sur-mesure et la distribution agroalimentaire.",
       },
       { name: "author", content: "GACTI" },
-      { property: "og:title", content: "GACTI — Logistique internationale" },
+      { property: "og:title", content: "GACTI — Transit véhicules, transport maritime & catalogues" },
       {
         property: "og:description",
         content:
@@ -44,6 +44,12 @@ export const Route = createRootRoute({
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "GACTI — Transit véhicules, transport maritime & catalogues" },
+      { name: "description", content: "Gacti Refined offers a clean, responsive website experience for gacti.fr." },
+      { property: "og:description", content: "Gacti Refined offers a clean, responsive website experience for gacti.fr." },
+      { name: "twitter:description", content: "Gacti Refined offers a clean, responsive website experience for gacti.fr." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/4a78efff-00ae-4d46-a923-d3901658cc23/id-preview-f4cc8869--0ced2a67-2dfb-41ed-9b46-df948a1e8225.lovable.app-1777015029668.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/4a78efff-00ae-4d46-a923-d3901658cc23/id-preview-f4cc8869--0ced2a67-2dfb-41ed-9b46-df948a1e8225.lovable.app-1777015029668.png" },
     ],
     links: [
       {
