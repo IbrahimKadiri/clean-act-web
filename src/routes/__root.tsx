@@ -1,6 +1,4 @@
-import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
-
-import appCss from "../styles.css?url";
+import { Outlet, Link, createRootRoute } from "@tanstack/react-router";
 
 function NotFoundComponent() {
   return (
@@ -50,32 +48,11 @@ export const Route = createRootRoute({
       { name: "twitter:description", content: "Gacti Refined offers a clean, responsive website experience for gacti.fr." },
       { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/4a78efff-00ae-4d46-a923-d3901658cc23/id-preview-f4cc8869--0ced2a67-2dfb-41ed-9b46-df948a1e8225.lovable.app-1777015029668.png" },
       { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/4a78efff-00ae-4d46-a923-d3901658cc23/id-preview-f4cc8869--0ced2a67-2dfb-41ed-9b46-df948a1e8225.lovable.app-1777015029668.png" },
-    ],
-    links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
-    ],
+    ]
   }),
-  shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
 });
-
-function RootShell({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="en">
-      <head>
-        <HeadContent />
-      </head>
-      <body>
-        {children}
-        <Scripts />
-      </body>
-    </html>
-  );
-}
 
 function RootComponent() {
   return <Outlet />;

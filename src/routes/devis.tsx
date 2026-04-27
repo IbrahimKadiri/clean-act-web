@@ -25,7 +25,6 @@ export const Route = createFileRoute("/devis")({
 
 function DevisPage() {
   const [submitted, setSubmitted] = useState(false);
-
   return (
     <PageLayout>
       <PageHero
