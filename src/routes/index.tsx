@@ -138,20 +138,56 @@ function Index() {
               </div>
             </div>
           </div>
+        </section>
 
-          {/* Stats strip */}
-          <div className="absolute bottom-0 inset-x-0 border-t border-cream/10 bg-ink/40 backdrop-blur-md">
-            <div className="container-page grid grid-cols-2 md:grid-cols-4 divide-x divide-cream/10">
-              {stats.map((s) => (
-                <div key={s.label} className="py-6 px-4 text-center md:text-left first:pl-0 md:first:pl-8">
-                  <div className="font-display text-3xl md:text-4xl font-semibold text-cream">{s.value}</div>
-                  <div className="mt-1 text-xs md:text-sm text-cream/60 uppercase tracking-wider">{s.label}</div>
+         {/* Stats strip */}
+          <div className="relative -mt-10 md:-mt-12 z-10 inset-x-0 border-t border-cream/10 bg-ink/95 backdrop-blur-sm">
+            <div className="container-page grid grid-cols-2 md:grid-cols-4">
+              {stats.map((s, i) => (
+                <div
+                  key={s.label}
+                  className={`
+                    py-6 px-4 text-center md:text-left first:pl-0 md:first:pl-8
+                    border-cream/10
+                    border-b md:border-b-0
+                    md:border-r md:last:border-r-0
+                    ${i % 2 === 0 ? "border-r md:border-r" : ""}
+                  `}
+                >
+                  <div className="font-display text-3xl md:text-4xl font-semibold text-cream">
+                    {s.value}
+                  </div>
+                  <div className="mt-1 text-xs md:text-sm text-cream/60 uppercase tracking-wider">
+                    {s.label}
+                  </div>
                 </div>
               ))}
             </div>
           </div>
-        </section>
 
+          <div className="container-page grid grid-cols-2 md:grid-cols-4">
+            {stats.map((s, i) => (
+              <div
+                key={s.label}
+                className="
+                  py-6 px-4 text-center md:text-left
+                  border-cream/10
+                  border-b
+                  md:border-b-0
+                  md:border-r
+                  last:border-r-0
+                "
+              >
+                <div className="font-display text-3xl md:text-4xl font-semibold text-cream">
+                  {s.value}
+                </div>
+                <div className="mt-1 text-xs md:text-sm text-cream/60 uppercase tracking-wider">
+                  {s.label}
+                </div>
+              </div>
+            ))}
+          </div>
+          
         {/* SERVICES */}
         <section className="container-page py-24 md:py-36">
           <div className="grid md:grid-cols-2 gap-10 items-end mb-16">
