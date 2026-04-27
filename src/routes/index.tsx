@@ -164,29 +164,6 @@ function Index() {
               ))}
             </div>
           </div>
-
-          <div className="container-page grid grid-cols-2 md:grid-cols-4">
-            {stats.map((s, i) => (
-              <div
-                key={s.label}
-                className="
-                  py-6 px-4 text-center md:text-left
-                  border-cream/10
-                  border-b
-                  md:border-b-0
-                  md:border-r
-                  last:border-r-0
-                "
-              >
-                <div className="font-display text-3xl md:text-4xl font-semibold text-cream">
-                  {s.value}
-                </div>
-                <div className="mt-1 text-xs md:text-sm text-cream/60 uppercase tracking-wider">
-                  {s.label}
-                </div>
-              </div>
-            ))}
-          </div>
           
         {/* SERVICES */}
         <section className="container-page py-24 md:py-36">
